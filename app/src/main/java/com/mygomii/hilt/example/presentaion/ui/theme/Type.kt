@@ -1,4 +1,4 @@
-package com.mygomii.hilt.example.ui.theme
+package com.mygomii.hilt.example.presentaion.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

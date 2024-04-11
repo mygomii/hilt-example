@@ -1,4 +1,4 @@
-package com.mygomii.hilt.example.ui.theme
+package com.mygomii.hilt.example.presentaion.ui.theme
 
 import android.app.Activity
 import android.os.Build

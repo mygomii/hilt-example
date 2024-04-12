@@ -80,13 +80,21 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.moshi)
-    implementation(libs.retrofitConverter)
-    implementation(libs.okttpAndroid)
-    implementation(libs.coroutinesAndroid)
-    implementation(libs.coroutinesCore)
+    implementation(libs.retrofit.converter)
+    implementation(libs.okttp.logging.interceptor)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 
     implementation(libs.logger)
-//    implementation(libs.androidx.hilt.navigation.hilt)
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.androidx.hilt.navigation)
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.content.negotiation)
+    implementation(libs.ktor.json)
+    implementation(libs.ktor.logging)
+    implementation(libs.ktor.okhttp)
+
+
 
 }

@@ -16,6 +16,7 @@ moshi = '1.9.3'
 okttp = "4.9.1"
 coroutines = "1.7.3"
 logger = "2.2.0"
+ktor = "2.3.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,17 +36,27 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-hilt-navigation = { group = "androidx.hilt:hilt-navigation-compose", name = "hilt-navigation", version.ref = "hiltCompose" }
+androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltCompose" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+okttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okttp" }
+
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+logger = { group = "com.orhanobut", name = "logger", version.ref = "logger" }
+
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
+ktor-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-json = { group = "io.ktor", name = "ktor-serialization-gson", version.ref = "ktor" }
+ktor-logging = { group = 'io.ktor', name = "ktor-client-logging", version.ref = "ktor" }
+ktor-okhttp = { group = "io.ktor", name="ktor-client-okhttp", version.ref = "ktor" }
 
 
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-retrofitConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
-okttpAndroid = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okttp" }
-
-coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-logger = { module = "com.orhanobut:logger", version.ref = "logger" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

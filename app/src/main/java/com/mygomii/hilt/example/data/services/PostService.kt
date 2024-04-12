@@ -1,8 +1,8 @@
 package com.mygomii.hilt.example.data.services
 
 import com.mygomii.hilt.example.domain.models.Post
+import kotlinx.coroutines.flow.Flow
 
 interface PostService {
-    //    @GET("/posts")
-    suspend fun getPosts(): List<Post>
+    suspend fun getPosts(): Flow<List<Post>>
 }

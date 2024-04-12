@@ -48,11 +48,3 @@ fun Greeting(viewModel: MainViewModel = viewModel()) {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HiltexampleTheme {
-        // Greeting("Android")
-    }
-}

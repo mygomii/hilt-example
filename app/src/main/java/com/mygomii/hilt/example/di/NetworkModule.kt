@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.DEFAULT
@@ -15,7 +15,8 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.http.URLProtocol
-import io.ktor.serialization.gson.gson
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
 private const val BASE_URL = "jsonplaceholder.typicode.com"
@@ -26,15 +27,27 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideHttpClient(): HttpClient {
-        return HttpClient(OkHttp) {
+        return HttpClient(CIO) {
             defaultRequest {
                 url {
                     protocol = URLProtocol.HTTPS
                     host = BASE_URL
                 }
             }
+            install(Logging) {
+                logger = object : Logger {
+                    override fun log(message: String) {
+                        println("##### $message")
+                    }
+                }
+                level = LogLevel.ALL
+            }
+
             install(ContentNegotiation) {
-                gson()
+                json(Json {
+                    encodeDefaults = true
+                    ignoreUnknownKeys = true
+                })
             }
             install(Logging) {
                 logger = Logger.DEFAULT
@@ -49,5 +62,3 @@ object NetworkModule {
         return PostServiceImpl(httpClient)
     }
 }
-
-

@@ -1,8 +1,8 @@
 package com.mygomii.hilt.example.domain.models
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class Post(
     var userId: Int,
     var id: Int,

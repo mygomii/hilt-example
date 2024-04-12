@@ -11,12 +11,12 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2023.08.00"
-retrofit = "2.9.0"
-moshi = '1.9.3'
-okttp = "4.9.1"
+
 coroutines = "1.7.3"
 logger = "2.2.0"
 ktor = "2.3.10"
+json = "2.10.1"
+serialization = "1.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,12 +38,6 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltCompose" }
 
-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
-
-moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
-okttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okttp" }
-
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
@@ -52,13 +46,32 @@ logger = { group = "com.orhanobut", name = "logger", version.ref = "logger" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 ktor-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
-ktor-json = { group = "io.ktor", name = "ktor-serialization-gson", version.ref = "ktor" }
+ktor-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-logging = { group = 'io.ktor', name = "ktor-client-logging", version.ref = "ktor" }
-ktor-okhttp = { group = "io.ktor", name="ktor-client-okhttp", version.ref = "ktor" }
+ktor-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = 'ktor' }
 
+google-json = { group = "com.google.code.gson", name = "gson", version.ref = "json" }
 
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 daggerHiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
+kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
+
+[bundles]
+ktor = [
+    "ktor-client-core",
+    "ktor-client-android",
+    "ktor-content-negotiation",
+    "ktor-json",
+    "ktor-logging",
+    "ktor-okhttp",
+    "ktor-cio",
+]
+
+coroutine = [
+    "coroutines-core",
+    "coroutines-android",
+]

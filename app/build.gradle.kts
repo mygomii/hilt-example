@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
     alias(libs.plugins.daggerHiltAndroid)
+    alias(libs.plugins.kotlinPluginSerialization)
 }
 
 android {
@@ -59,42 +60,38 @@ kapt {
 }
 
 dependencies {
+    with(libs.androidx) {
+        implementation(core.ktx)
+        implementation(lifecycle.runtime.ktx)
+        implementation(activity.compose)
+        implementation(platform(compose.bom))
+        implementation(ui)
+        implementation(ui.graphics)
+        implementation(ui.tooling.preview)
+        implementation(material3)
+        androidTestImplementation(junit)
+        androidTestImplementation(espresso.core)
+        androidTestImplementation(platform(compose.bom))
+        androidTestImplementation(ui.test.junit4)
+        debugImplementation(ui.tooling)
+        debugImplementation(ui.test.manifest)
+        implementation(hilt.navigation)
+    }
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
 
-    implementation(libs.retrofit)
-    implementation(libs.moshi)
-    implementation(libs.retrofit.converter)
-    implementation(libs.okttp.logging.interceptor)
-    implementation(libs.coroutines.core)
-    implementation(libs.coroutines.android)
+    with(libs.hilt) {
+        implementation(android)
+        kapt(android.compiler)
+    }
+
+
+    implementation(libs.bundles.ktor)
+    implementation(libs.bundles.coroutine)
 
     implementation(libs.logger)
-    implementation(libs.androidx.hilt.navigation)
 
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.content.negotiation)
-    implementation(libs.ktor.json)
-    implementation(libs.ktor.logging)
-    implementation(libs.ktor.okhttp)
-
+    implementation(libs.google.json)
 
 
 }

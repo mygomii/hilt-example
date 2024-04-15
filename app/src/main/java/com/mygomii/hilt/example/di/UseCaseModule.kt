@@ -16,5 +16,4 @@ object UseCaseModule {
     fun providePostUseCase(postRepository: PostRepository): PostUseCase {
         return PostUseCase(postRepository)
     }
-
 }

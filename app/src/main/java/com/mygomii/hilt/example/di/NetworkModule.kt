@@ -1,7 +1,5 @@
 package com.mygomii.hilt.example.di
 
-import com.mygomii.hilt.example.data.services.PostService
-import com.mygomii.hilt.example.data.services.PostServiceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,11 +52,5 @@ object NetworkModule {
                 level = LogLevel.ALL
             }
         }
-    }
-
-    @Singleton
-    @Provides
-    fun providePostSerVice(httpClient: HttpClient): PostService {
-        return PostServiceImpl(httpClient)
     }
 }

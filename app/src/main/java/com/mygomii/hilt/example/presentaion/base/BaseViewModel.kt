@@ -1,10 +1,12 @@
 package com.mygomii.hilt.example.presentaion.base
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
+    protected val viewModelScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCleared() {
         viewModelScope.cancel()
